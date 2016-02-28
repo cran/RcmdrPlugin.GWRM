@@ -1,0 +1,10 @@
+686629381bb4935347ef8419d0f7bb4d *DESCRIPTION
+d70a626fe6966e2f04635dd543f21da5 *NAMESPACE
+513401695086342e98b5b7d3afb6c019 *R/RcmdrPlugin.GWRM.r
+69ad180eef893cbd8a0c0983ee0ccf02 *R/globals.R
+5d8bb03864215ec81ef921fa899780e9 *R/pkgname.R
+94d51291df6ce962aa0b784f65a64029 *inst/etc/menus.txt
+e588842fcd66da684d0c684dc3a5e82e *man/RcmdrPlugin.GWRM.Rd
+c39c0ee7a042b57219ab1c758cdf5ded *man/RcmdrPlugin.Utility.Rd
+efc8922a3eef96b3687971d97d8de793 *man/generalizedWaringModel.Rd
+b09dd2daadd5553fe6ffbd6f6fff6fde *tests/gwrmplugin.r
