@@ -42,10 +42,11 @@ NULL
 #' @importFrom Rcmdr gettextRcmdr getDialog initializeDialog ActiveModel formulaFields ActiveDataSet modelFormula UpdateModelNumber tclVar tkframe ttkentry subsetBox variableComboBox Numeric tclvalue errorCondition gettextRcmdr trim.blanks is.valid.name checkReplace UpdateModelNumber closeDialog getSelection putDialog ActiveDataSet doItAndPrint activeModel tkfocus CommanderWindow OKCancelHelp buttonRcmdr tkgrid labelRcmdr getFrame tklabel dialogSuffix
 #' @import GWRM RcmdrMisc
 #' 
-#' @example tests/gwrmplugin.r
+#' @examples
+#' library(RcmdrPlugin.GWRM)
+#' 
 #' @export
 #' 
-
 generalizedWaringModel<-function () 
 {
   if (! ("gw" %in% getRcmdr("modelClasses")))
@@ -181,7 +182,7 @@ generalizedWaringModel<-function ()
 
 #' @rdname RcmdrPlugin.Utility
 #' @importFrom Rcmdr getRcmdr .Tcl
-#' @importFrom stats .checkMFClasses delete.response model.frame na.omit terms
+#' @importFrom stats na.omit terms delete.response model.frame .checkMFClasses
 
 extractNewData <-function(nrows,colNames){
   ncols<-length(colNames)
@@ -242,13 +243,6 @@ activeModelGW<- function(envir = .GlobalEnv,...){
     return (FALSE)
   }else{
     if(class(get(activeModel(), envir = envir))[1] == "gw"){
-         #Disabled some menus when activeModel is gw
-         menus=getRcmdr("Menus")
-         modelsMenus=menus[mapply(function(a){names(a$position)}=="modelsMenu",menus)]
-         .Tcl(paste(modelsMenus[[1]]$ID," entryconfigure 8 -state disabled",sep=""))
-         .Tcl(paste(modelsMenus[[1]]$ID,".1"," entryconfigure 0 -state disabled",sep=""))
-         .Tcl(paste(modelsMenus[[1]]$ID,".1"," entryconfigure 1 -state disabled",sep=""))
-         .Tcl(paste(modelsMenus[[1]]$ID,".1"," entryconfigure 2 -state disabled",sep=""))
       return (TRUE)
     }else{
       return (FALSE)  
@@ -295,7 +289,7 @@ showTable<-function(...){
 # @return Partition of variance of the \code{GW} model (see \code{\link{partvar}}).
 #' 
 #' @importFrom Rcmdr tkframe tkscale
-#' @importFrom stats .checkMFClasses delete.response model.frame na.omit terms
+#' @importFrom stats na.omit terms delete.response model.frame .checkMFClasses
 #' 
 #' @export
 
@@ -467,7 +461,6 @@ gwrmResiduals<-function(){
 
 gwrmAddObservationStatistics <-function () 
 {
-  #Rcmdr addObservationStatistics function with a bug solved.
   .activeDataSet <- ActiveDataSet()
   .activeModel <- ActiveModel()
   if (is.null(.activeModel)) 
